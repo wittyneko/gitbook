@@ -2,13 +2,13 @@
 
 * [Introduction](README.md)
 
-## Linux
-
-* [Linux系统GRUB硬盘安装](linux/linux-xi-tong-grub-ying-pan-an-zhuang.md)
-
 ## Android
 
 * [Android Studio Git使用教程](android/android-studio-git-shi-yong-jiao-cheng.md)
+
+## Linux
+
+* [Linux系统GRUB硬盘安装](linux/linux-xi-tong-grub-ying-pan-an-zhuang.md)
 
 ## Mac
 
