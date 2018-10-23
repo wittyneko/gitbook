@@ -6,7 +6,7 @@
 
 ## 关于我
 
-QQ：779521557  
+QQ：[779521557](tencent://message/?Menu=yes&uin=779521557&Service=300&sigT=t)  
 公众号：[TUTUTOO](https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU4NDIyNTExNw==&scene=124#wechat_redirect)  
 简书：[TUTUTOO](https://www.jianshu.com/u/4025214b6abd)  
 GitHub：[https://github.com/wittyneko](https://github.com/wittyneko)
