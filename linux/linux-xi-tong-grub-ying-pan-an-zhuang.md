@@ -1,6 +1,34 @@
-# Linux系统GRUB硬盘安装
+# Linux系统安装
 
-## ubuntu
+## UEFI启动管理
+
+```bash
+# 修复启动引导，--efi-directory指定efi安装目录，--boot-directory指定efi分区目录
+sudo grub-install /dev/sda --efi-directory=/mnt/boot/efi --boot-directory=/mnt/boot
+# 查看启动项
+efibootmgr
+# 添加启动项：-c创建，-L名称，-d磁盘，-p分区号，-l有效的efi启动文件
+efibootmgr -c -w -L "BootOptionName" -d /dev/sda -p 1 -l /EFI/Boot/bootx64.efi
+# 删除启动项
+efibootmgr -B -b 编号
+# 禁用启动项
+efibootmgr -A -b 编号
+# 启用启动项
+efibootmgr -a -b 编号
+# 修改顺序编号x在y前
+efibootmgr -o x,y
+```
+
+[用efibootmgr管理UEFI启动项，添加丢失的启动项](https://blog.csdn.net/Pipcie/article/details/79971337)  
+[Ubuntu 16.04引导错误修复- EFI - Linux公社](http://www.linuxidc.com/Linux/2016-09/135486.htm)  
+[在linux环境中利用efibootmgr管理efi启动项](https://kelvin.mbioq.com/using-efibootmgr-to-manage-efi-startup-items-in-an-linux-environment.html)
+
+## Windows的Linux子系统
+
+[Windows10内置Linux子系统初体验](https://www.jianshu.com/p/bc38ed12da1d)  
+[Windows10安装Linux子系统Ubuntu](https://blog.csdn.net/zhouzme/article/details/78780479)
+
+## GRUB安装ubuntu
 
 ```text
 title Install Ubuntu
@@ -10,7 +38,7 @@ initrd (hd0,4)/linux/ubuntu/initrd.lz
 boot
 ```
 
-## deepin
+## GRUB安装deepin
 
 ```text
 title install  deepin-15
@@ -54,6 +82,5 @@ boot
 /etc/grub.d/ 文件夹  
 /etc/default/grub 文件  
 sudo gedit /etc/default/grub  
-sudo update-grub  
-sudo gedit /boot/grub/grub.cfg
+sudo update-grub2
 
