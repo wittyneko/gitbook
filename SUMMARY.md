@@ -9,6 +9,7 @@
 ## Linux
 
 * [Linux系统GRUB硬盘安装](linux/linux-xi-tong-grub-ying-pan-an-zhuang.md)
+* [酸酸乳好喝](linux/suan-suan-ru-hao-he.md)
 
 ## Mac
 
@@ -23,4 +24,5 @@
 ## Dev
 
 * [Git 常用命令](dev/git-chang-yong-ming-ling.md)
+* [GitBook](dev/gitbook.md)
 
