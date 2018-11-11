@@ -10,6 +10,7 @@
 
 * [Linux系统安装](linux/linux-xi-tong-grub-ying-pan-an-zhuang.md)
 * [酸酸乳好喝](linux/suan-suan-ru-hao-he.md)
+* [后台运行](linux/hou-tai-yun-hang.md)
 
 ## Mac
 
@@ -24,5 +25,6 @@
 ## Dev
 
 * [Git 常用命令](dev/git-chang-yong-ming-ling.md)
+* [Git submodule 和 subtree](dev/git-submodule-he-subtree.md)
 * [GitBook](dev/gitbook.md)
 
