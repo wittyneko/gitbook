@@ -1,4 +1,4 @@
-# Table of contents
+# Summary
 
 * [Introduction](README.md)
 
@@ -15,6 +15,8 @@
 ## Mac
 
 * [Mac 版迅雷去广告](mac/mac-ban-xun-lei-qu-guang-gao.md)
+* [Homebrew 管理应用](mac/homebrew-guan-li-ying-yong.md)
+* [装机必备](mac/zhuang-ji-bi-bei.md)
 
 ## Web
 
