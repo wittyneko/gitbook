@@ -53,13 +53,18 @@ homebrew再升级软件时候不会清理相关的旧版本
 ```bash
 brew cask install google-chrome
 thunder
-baiducloud
+baidunetdisk
 sogouinput
 neteasemusic
 wechat
 qq
 
+mplayerx
+evernote
+skitch
+
 iterm2
+alfred
 sublime-text
 sourcetree
 synergy
