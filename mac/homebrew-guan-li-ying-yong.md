@@ -61,19 +61,24 @@ qq
 
 keka
 jietu
+skitch
 mplayerx
 eudic
 evernote
+gitbook
+typora
+
 
 iterm2
 alfred
-sublime-text
-sourcetree
 synergy
 vnc-viewer
 
+atom
+sublime-text
+visual-studio-code
 android-studio
-skitch
+sourcetree
 
 v2rayx
 shadowsocksx-ng-r
