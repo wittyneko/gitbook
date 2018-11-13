@@ -22,6 +22,7 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ## 预览增强
 
 [增强 Mac「预览」功能（QuickLook）的教程](https://sspai.com/31927)
+
 [QuickLookPlugins.com](http://www.quicklookplugins.com/)
 ```bash
 # markdown
@@ -42,7 +43,9 @@ brew install mas
 ```
 
 ## 文件备份
+
 [文件备份还能怎么玩？试试这条命令](https://sspai.com/post/41967)
+
 ```bash
 # rsync -av [源文件夹路径] [备份路径]
 # rsync -av [源文件夹路径] [备份路径] --delete
@@ -53,8 +56,10 @@ brew install mas
 
 [除了会员，别无选择？6 款 Mac 下载工具帮你加速
 ](https://sspai.com/post/41174)
+
 `Folx 5`、`FDM`、`Leech 3`、`uTorrent`、`Transmission`、`Aria2`
 
 ## Markdown
+
 [Typora 主题](https://sspai.com/post/43873)
 
