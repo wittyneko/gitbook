@@ -1,6 +1,6 @@
 # 装机必备
 
-## zsh
+## ohmyzsh
 ```
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```

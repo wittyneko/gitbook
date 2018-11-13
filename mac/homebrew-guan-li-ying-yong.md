@@ -59,7 +59,11 @@ neteasemusic
 wechat
 qq
 
+keka
+eudic
+jietu
 mplayerx
+eudic
 evernote
 skitch
 
@@ -69,6 +73,12 @@ sublime-text
 sourcetree
 synergy
 vnc-viewer
+
+android-studio
+skitch
+
+v2rayx
+shadowsocksx-ng-r
 ```
 
 
