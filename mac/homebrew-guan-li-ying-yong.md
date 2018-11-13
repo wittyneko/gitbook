@@ -60,12 +60,10 @@ wechat
 qq
 
 keka
-eudic
 jietu
 mplayerx
 eudic
 evernote
-skitch
 
 iterm2
 alfred
