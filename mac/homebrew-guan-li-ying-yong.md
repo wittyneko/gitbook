@@ -82,6 +82,9 @@ sourcetree
 
 v2rayx
 shadowsocksx-ng-r
+
+obs
+soundflower
 ```
 
 

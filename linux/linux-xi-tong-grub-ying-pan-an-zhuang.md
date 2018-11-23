@@ -23,6 +23,21 @@ efibootmgr -o x,y
 [Ubuntu 16.04引导错误修复- EFI - Linux公社](http://www.linuxidc.com/Linux/2016-09/135486.htm)  
 [在linux环境中利用efibootmgr管理efi启动项](https://kelvin.mbioq.com/using-efibootmgr-to-manage-efi-startup-items-in-an-linux-environment.html)
 
+## UEFI引导修复
+
+`ubuntu efi引导修复`,`ubuntu uefi安装指定位置`,`ubuntu 重新挂载uefi`
+
+```bash
+# --efi-directory 硬盘efi分区， --boot-directory 系统分区boot目录，--bootloader-id 启动名称
+sudo grub-install /dev/sda --efi-directory '/media/wittyneko/C14D-581B'  --boot-directory '/media/wittyneko/deepin/boot' --bootloader-id=deepin
+```
+
+[Ubuntu 16.04引导错误修复 - EFI](https://www.linuxidc.com/Linux/2016-09/135486.htm)
+[UEFI安装没有/boot/efi挂载点，导致无法启动](https://bbs.deepin.org/forum.php?mod=viewthread&tid=31672)
+[UEFI启动模式安装ubuntu指南](https://www.cnblogs.com/iamnewsea/p/7701436.html)
+[[持续更新][MacBook Pro] Deepin 15.7 遇到的几个问题和解决方法](https://bbs.deepin.org/forum.php?mod=viewthread&tid=169677)
+[修复启动](http://wiki.deepin.org/wiki/%E4%BF%AE%E5%A4%8D%E5%90%AF%E5%8A%A8)
+
 ## Windows的Linux子系统
 
 [Windows10内置Linux子系统初体验](https://www.jianshu.com/p/bc38ed12da1d)  
@@ -84,3 +99,46 @@ boot
 sudo gedit /etc/default/grub  
 sudo update-grub2
 
+## 软件源修改
+
+更改 `/etc/apt/sources.list` 文件；
+命令`sudo sed -i 's/archive.ubuntu.com/mirrors.ustc.edu.cn/g' /etc/apt/sources.list`；
+
+[配置生成器](https://mirrors.ustc.edu.cn/repogen/)
+[中国科学技术大学 Linux 用户协会](https://lug.ustc.edu.cn/wiki/start)
+
+```bash
+sudo apt upgrade
+```
+
+### Ubuntu
+[Ubuntu镜像使用帮助](https://lug.ustc.edu.cn/wiki/mirrors/help/ubuntu)
+[http://mirrors.ustc.edu.cn](http://mirrors.ustc.edu.cn/)
+[http://archive.ubuntu.com/ubuntu](http://archive.ubuntu.com/ubuntu)
+
+### Deepin
+[http://packages.deepin.com/deepin](http://packages.deepin.com/deepin)
+
+## 配置文件位置
+用户文件
+```
+~/.profile
+~/.bash_profile 或者 ~./bash_login
+~/.bashrc
+```
+系统文件
+```
+/etc/environment
+/etc/profile
+/etc/bash.bashrc
+```
+`/etc/environment`不需要使用export设置环境变量，其它文件需要。
+`source /etc/profile` 使配置文件立即生效
+
+## 中文文件夹转英文
+```
+$ export LANG=en_US #改变支持的语言为英语
+$ xdg-user-dirs-gtk-update #更新系统语言，按照中文对应的英语进行翻译3
+$ export LANG=zh_CN.UTF-8 #重新支持中文
+```
+[Ubuntu中文文件夹转英文](http://www.cnblogs.com/plokmju/p/Linux_ZhCNToEnUS.html)

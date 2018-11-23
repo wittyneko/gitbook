@@ -1,16 +1,6 @@
 # 酸酸乳好喝
 
-
-
-Shadowsock想必都会配置，相对的ShadowsockR多了很多加密方式，因为配置比较繁琐，用的人少也更安全，同时ShadowsockR是可以兼容Shadowsock的，不支持ShadowsockR的设备也可以Shadowsock客户端使用。
-
-## BBR锐速
-
-```text
-wget --no-check-certificate https://github.com/iyuco/scripts/raw/master/bbr.sh
-chmod +x bbr.sh
-./bbr.sh
-```
+虽然好喝没事少喝点。
 
 ## 一键配置
 
@@ -231,5 +221,88 @@ sudo /opt/shadowsocksr/shadowsocks/local.py -c /etc/shadowsocksr/config -d start
 
 附：更多操作 [https://github.com/breakwa11/shadowsocks-rss/wiki](https://github.com/breakwa11/shadowsocks-rss/wiki)
 
+
+
+---
+
+## 代理配置
+
+### PAC代理
+- **[genpac](https://github.com/JinnLynn/genpac)**
+
+```
+# 从github安装开发版本
+$ pip install https://github.com/JinnLynn/genpac/archive/master.zip  # sudo
+```
+没加入`sudo`可在pip安装后在`/home/wittyneko/.local/bin`查看python执行genpac
+1). 生成配置
+```
+# 创建目录
+sudo mkdir /etc/genpac
+# 修改权限
+sudo chmod a+w -R /etc/genpac
+# 生成配置文件
+genpac --init /etc/genpac
+vim /etc/genpac/config.init
+```
+2). 修改配置文件`config.init`
+```
+[config]
+pac-proxy = "SOCKS5 127.0.0.1:1080; PROXY 127.0.0.1:8123; DIRECT"
+gfwlist-proxy = SOCKS5 127.0.0.1:1080
+gfwlist-local = /etc/genpac/gfwlist.txt
+update-gfwlist-local = true
+user-rule-from = /etc/genpac/user-rules.txt
+output = /etc/genpac/autoproxy.pac
+```
+3). 生成代理文件
+```
+# 1. 配置文件生成
+genpac -c /etc/genpac/config.init
+# 2. 禁用gfwlist，自定义路径
+genpac -c /etc/genpac/config.ini --gfwlist-disabled -o /etc/genpac/userproxy.pac
+# 3. 直接生成
+genpac -p "SOCKS5 127.0.0.1:1080" --gfwlist-proxy "SOCKS5 127.0.0.1:1080" -o /etc/genpac/autoproxy.pac"
+```
+**[gfwlist](https://github.com/gfwlist/gfwlist)**
+部分系统全局代理不需要file://前缀，跟网上说的不一样
+gfwlist2Pac
+http://blog.csdn.net/weiqiangsu/article/details/46956977
+https://github.com/JinnLynn/genpac
+
+
+## Polipo 设置全局代理
+https://jingsam.github.io/2016/05/08/setup-shadowsocks-http-proxy-on-ubuntu-server.html
+
+1. 安装Polipo
+`sudo apt-get install polipo`
+
+2. 修改polipo的配置文件/etc/polipo/config
+
+```
+logSyslog = true
+logFile = /var/log/polipo/polipo.log
+
+proxyAddress = "0.0.0.0"
+
+socksParentProxy = "127.0.0.1:1080"
+socksProxyType = socks5
+
+chunkHighMark = 50331648
+objectHighMark = 16384
+
+serverMaxSlots = 64
+serverSlots = 16
+serverSlots1 = 32
+
+```
+重启polipo服务
+`sudo /etc/init.d/polipo restart`
+
+终端配置http代理
+`export http_proxy="http://127.0.0.1:8123/"`
+
 > 本作品采用[知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](http://creativecommons.org/licenses/by-nc-sa/4.0/)进行许可。转载请保留作者及原文链接
+
+
 

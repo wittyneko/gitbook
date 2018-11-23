@@ -9,6 +9,11 @@
 ## Linux
 
 * [Linux系统安装](linux/linux-xi-tong-grub-ying-pan-an-zhuang.md)
+* [Linux 基础知识](linux/linux-ji-chu-zhi-shi.md)
+* [Linux 服务器维护](linux/linux-fu-wu-qi-wei-hu.md)
+* [Ubuntu](linux/ubuntu.md)
+* [CDLinux](linux/cdlinux.md)
+* [Shell Auto](linux/shell-auto.md)
 * [酸酸乳好喝](linux/suan-suan-ru-hao-he.md)
 * [后台运行](linux/hou-tai-yun-hang.md)
 
@@ -29,4 +34,5 @@
 * [Git 常用命令](dev/git-chang-yong-ming-ling.md)
 * [Git submodule 和 subtree](dev/git-submodule-he-subtree.md)
 * [GitBook](dev/gitbook.md)
+* [软件问题处理](dev/ruan-jian-wen-ti-chu-li.md)
 

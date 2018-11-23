@@ -52,6 +52,13 @@ brew install mas
 
 ```
 
+[ 添加Mac的Time Machine备份到smb网络硬盘（windows 共享文件夹）](https://www.douban.com/note/614980869/)
+
+```sh
+sudo tmutil setdestination -p /Volumes/backup/
+```
+
+
 ## 下载
 
 [除了会员，别无选择？6 款 Mac 下载工具帮你加速
@@ -62,4 +69,9 @@ brew install mas
 ## Markdown
 
 [Typora 主题](https://sspai.com/post/43873)
+
+## 数据库
+
+[SequelPro](http://www.sequelpro.com/)
+[DBeaver](https://dbeaver.jkiss.org)
 
