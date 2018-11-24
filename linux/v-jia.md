@@ -1,4 +1,4 @@
-# V 家
+# V+
 
 ### BBR
  [开启TCP BBR拥塞控制算法](https://github.com/iMeiji/shadowsocks_install/wiki/%E5%BC%80%E5%90%AFTCP-BBR%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95)
@@ -23,7 +23,7 @@ sysctl net.ipv4.tcp_available_congestion_control
 sysctl net.ipv4.tcp_congestion_control
 ```
 [搬瓦工OpenVZ 平台 Google BBR 一键安装脚本](https://www.bawagon.com/openvz-google-bbr/)
-```
+```bash
 wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh
 chmod +x ovz-bbr-installer.sh
 ./ovz-bbr-installer.sh
@@ -31,7 +31,11 @@ chmod +x ovz-bbr-installer.sh
 systemctl {start|stop|restart} haproxy-lkl
 service haproxy-lkl {start|stop|restart}
 
+# 检查
+iptables -t nat -nL
+# 修改
 vi /usr/local/haproxy-lkl/etc/port-rules
+# 卸载
 ./ovz-bbr-installer.sh uninstall
 ```
 
