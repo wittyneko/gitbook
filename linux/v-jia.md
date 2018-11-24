@@ -22,6 +22,14 @@ sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 sysctl net.ipv4.tcp_congestion_control
 ```
+[搬瓦工OpenVZ 平台 Google BBR 一键安装脚本](https://www.bawagon.com/openvz-google-bbr/)
+```
+wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh
+chmod +x ovz-bbr-installer.sh
+./ovz-bbr-installer.sh
+
+```
+
 
 ### 锐速
 
@@ -36,6 +44,12 @@ https://xpsss.com/859.html
 wget http://ftp.al/appex.sh
 chmod +x appex.sh
 bash appex.sh install
+
+systemctl {start|stop|restart} haproxy-lkl
+service haproxy-lkl {start|stop|restart}
+
+vi /usr/local/haproxy-lkl/etc/port-rules
+./ovz-bbr-installer.sh uninstall
 ```
 
 ### 安装v2
