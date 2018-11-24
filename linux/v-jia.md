@@ -28,6 +28,11 @@ wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-
 chmod +x ovz-bbr-installer.sh
 ./ovz-bbr-installer.sh
 
+systemctl {start|stop|restart} haproxy-lkl
+service haproxy-lkl {start|stop|restart}
+
+vi /usr/local/haproxy-lkl/etc/port-rules
+./ovz-bbr-installer.sh uninstall
 ```
 
 
@@ -44,12 +49,6 @@ https://xpsss.com/859.html
 wget http://ftp.al/appex.sh
 chmod +x appex.sh
 bash appex.sh install
-
-systemctl {start|stop|restart} haproxy-lkl
-service haproxy-lkl {start|stop|restart}
-
-vi /usr/local/haproxy-lkl/etc/port-rules
-./ovz-bbr-installer.sh uninstall
 ```
 
 ### 安装v2
