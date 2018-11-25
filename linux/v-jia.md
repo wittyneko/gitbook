@@ -22,6 +22,25 @@ sysctl -p
 sysctl net.ipv4.tcp_available_congestion_control
 sysctl net.ipv4.tcp_congestion_control
 ```
+
+[OpenVZ 平台 Google BBR 加速 TCP 之 Rinetd 方式](https://blog.kuoruan.com/119.html)
+```bash
+curl https://raw.githubusercontent.com/linhua55/lkl_study/master/get-rinetd.sh | bash
+iptables -t raw -nL
+
+vi /etc/rinetd-bbr.conf
+ip addr
+/usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw venet0:0 &
+
+```
+/etc/rinetd-bbr.conf
+
+```
+# bindadress bindport connectaddress connectport
+ 
+0.0.0.0 443 0.0.0.0 443
+```
+
 [搬瓦工OpenVZ 平台 Google BBR 一键安装脚本](https://www.bawagon.com/openvz-google-bbr/)
 ```bash
 wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh
