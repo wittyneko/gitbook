@@ -1,12 +1,25 @@
 # Linux 服务器维护
 
+## Oh-My-zsh
+
+```bash
+apt install zsh
+apt update
+apt install zsh
+chsh -s /bin/zsh
+vim /etc/passwd
+apt install git
+sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+sh -c "$(wget https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+```
+
 ## 常用软件
 
 ```bash
 # 安装/卸载apache2
 sudo apt-get install apache2
 sudo apt-get --purge remove apache2
-sudo apt-get autoremote
+sudo apt-get autoremove
 sudo rm -rf /var/www
 
 # 安装/卸载nginx

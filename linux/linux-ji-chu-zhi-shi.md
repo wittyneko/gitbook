@@ -126,7 +126,16 @@ sudo apt-get install nautilus-open-terminal
 
 ** 更新应用 **
 ```
-sudo apt-get dist-upgrade 
+# 源
+sudo apt update
+# 可更新列表
+sudo apt list --upgradable
+# 指定更新
+sudo apt install openssl
+# 已安装更新
+sudo apt upgrade
+# 系统更新
+sudo apt-get dist-upgrade
 ```
 
 ** 安装应用 **

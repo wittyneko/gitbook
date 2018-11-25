@@ -59,145 +59,249 @@ bash appex.sh install
 
 ```sh
 bash <(curl -L -s https://install.direct/go.sh)
+bash <(wget https://install.direct/go.sh -O -)
+
+# 指定版本
+wget https://install.direct/go.sh
+chmod a+x go.sh
+./go.sh --version 4.5.0
 ```
 
 ### WS-TLS
 ```sh
 # acme需要
-apt install socat
+apt install socat curl
 # 安装acme
 curl  https://get.acme.sh | sh
 source ~/.bashrc
 # 生成证书
-~/.acme.sh/acme.sh --issue -d my.xyz --standalone -k ec-256
+~/.acme.sh/acme.sh --issue -d my.com --standalone -k ec-256
 # 安装证书
-~/.acme.sh/acme.sh --installcert -d my.xyz --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
+~/.acme.sh/acme.sh --installcert -d my.com --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
+# 删除
+acme.sh --remove -d my.com --ecc
+# 吊销
+acme.sh --revoke -d my.com --ecc
 ```
+
+vim `dd` + `dG` 清空内容，`i` 插入编辑，`esc` + `:wq` 保存退出
+
 v2ray config `vim /etc/v2ray/config.json`
 ```json
 {
-  "inbound": {
-    "port": 10000,
-    "listen":"127.0.0.1",
-    "protocol": "vmess",
-    "settings": {
-      "clients": [
-        {
-          "id": "uuid",
-          "level": 1,
-          "alterId": 64
+  "inbounds": [
+    {
+      "port": 10000,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "${uuid}",
+            "level": 1,
+            "alterId": 6
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/path"
         }
-      ]
-    },
-    "streamSettings": {
-      "network": "ws",
-      "wsSettings": {
-      "path": "/about"
       }
     }
-  },
-  "outbound": {
-    "protocol": "freedom",
-    "settings": {}
-  },
-  "outboundDetour": [
+  ],
+  "outbounds": [
     {
+      "tag": "directout",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blockout",
       "protocol": "blackhole",
-      "settings": {},
-      "tag": "blocked"
+      "settings": {}
     }
   ],
   "routing": {
-    "strategy": "rules",
-    "settings": {
-      "rules": [
-        {
-          "type": "field",
-          "ip": ["geoip:private"],
-          "outboundTag": "blocked"
-        }
-      ]
-    }
+    "rules": [
+      {
+        "type": "field",
+        "ip": [
+          "geoip:private"
+        ],
+        "outboundTag": "blockout"
+      }
+    ]
   }
 }
 ```
 `systemctl restart v2ray`
 ### nginx
 
+[Debian 8 安装Nginx最新版本](https://www.cnblogs.com/geons/p/install_nginx.html)
+[Ubuntu 16.04系统中Nginx上配置HTTP/2简明教程](https://ywnz.com/linuxyffq/2103.html)
 ```
 apt install nginx
+
+apt remove  nginx nginx-common nginx-full
+
+
 ```
-`vim /etc/nginx/sites-available/default`
+`vim /etc/nginx/sites-enabled/v2ray`
 ```cfg
 server {
-	listen 443 ssl default_server;
-	listen [::]:443 ssl default_server;
+    listen 443 ssl default_server;
+    listen [::]:443 ssl default_server;
 
-	# Add index.php to the list if you are using PHP
-	index index.html index.htm index.nginx-debian.html;
+    # Add index.php to the list if you are using PHP
+    index index.html index.htm index.nginx-debian.html;
 
-	#server_name _;
-	server_name my.xyz;
+    #server_name _;
+    server_name ${my.com};
 
-	ssl on;
-	#ssl_certificate       /etc/v2ray/v2ray.crt;
-	#ssl_certificate_key   /etc/v2ray/v2ray.key;
-	#ssl_protocols         TLSv1 TLSv1.1 TLSv1.2;
-	#ssl_ciphers           HIGH:!aNULL:!MD5;
+    ssl on;
+    ssl_certificate       /etc/v2ray/v2ray.crt;
+    ssl_certificate_key   /etc/v2ray/v2ray.key;
+    ssl_protocols         TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers           HIGH:!aNULL:!MD5;
 
 
-	location /about {
-		proxy_redirect off;
-		proxy_pass http://127.0.0.1:10000;
-		proxy_http_version 1.1;
-		proxy_set_header Upgrade $http_upgrade;
-		proxy_set_header Connection "upgrade";
-		proxy_set_header Host $http_host;
-	}
+    location /path {
+        proxy_redirect off;
+        proxy_pass http://127.0.0.1:20000;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $http_host;
+    }
 
-	location / {
-		try_files $uri $uri/ =404;
-	}
+    location / {
+        try_files $uri $uri/ =404;
+    }
 }
 ```
 service nginx restart
 ### 客户端
-```
+```json
 {
-  "inbound": {
-    "port": 1080,
-    "listen": "127.0.0.1",
-    "protocol": "socks",
-    "domainOverride": ["tls","http"],
-    "settings": {
-      "auth": "noauth",
-      "udp": false
-    }
-  },
-  "outbound": {
-    "protocol": "vmess",
-    "settings": {
-      "vnext": [
+    "inbounds": [
         {
-          "address": "my.xyz",
-          "port": 443,
-          "users": [
-            {
-              "id": "uuid",
-              "alterId": 64
+            "tag": "socksin",
+            "port": 1080,
+            "listen": "0.0.0.0",
+            "protocol": "socks",
+            "settings": {
+                "auth": "noauth",
+                "udp": true
+            },
+            "snifffing": {
+                "enabled": false,
+                "destOverride": [
+                    "tls",
+                    "http"
+                ]
             }
-          ]
+        },
+        {
+            "tag": "httpin",
+            "port": 1087,
+            "listen": "0.0.0.0",
+            "protocol": "http",
+            "settings": {
+                "timeout": 0
+            },
+            "snifffing": {
+                "enabled": false,
+                "destOverride": [
+                    "tls",
+                    "http"
+                ]
+            }
         }
-      ]
-    },
-    "streamSettings": {
-      "network": "ws",
-      "security": "tls",
-      "wsSettings": {
-        "path": "/about"
-      }
+    ],
+    "outbounds": [
+        {
+            "tag": "proxyout",
+            "protocol": "vmess",
+            "settings": {
+                "vnext": [
+                    {
+                        "address": "${my.com}",
+                        "port": 443,
+                        "users": [
+                            {
+                                "id": "${uuid}",
+                                "alterId": 64,
+                                "security": "auto"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "streamSettings": {
+                "network": "ws",
+                "security": "tls",
+                "wsSettings": {
+                    "path": "/path",
+                    "headers": {
+                        "Host": "${my.com}"
+                    }
+                },
+                "httpSettings": {
+                    "path": "/path"
+                },
+                "tlsSettings": {
+                    "serverName": "${my.com}",
+                    "allowInsecure": false
+                },
+                "sockopt": {
+                    "tcpFastOpen": true
+                }
+            }
+        },
+        {
+            "tag": "directout",
+            "protocol": "freedom",
+            "settings": {}
+        },
+        {
+            "tag": "blockout",
+            "protocol": "blackhole",
+            "settings": {}
+        }
+    ],
+    "routing": {
+        "domainStrategy": "IPIfNonMatch",
+        "rules": [
+            {
+                "type": "field",
+                "outboundTag": "directout",
+                "domain": [
+                    "geosite:cn"
+                ],
+                "ip": [
+                    "0.0.0.0/8",
+                    "10.0.0.0/8",
+                    "100.64.0.0/10",
+                    "127.0.0.0/8",
+                    "169.254.0.0/16",
+                    "172.16.0.0/12",
+                    "192.0.0.0/24",
+                    "192.0.2.0/24",
+                    "192.168.0.0/16",
+                    "198.18.0.0/15",
+                    "198.51.100.0/24",
+                    "203.0.113.0/24",
+                    "::1/128",
+                    "fc00::/7",
+                    "fe80::/10",
+                    "geoip:private",
+                    "geoip:cn"
+                ]
+            }
+        ]
     }
-  }
 }
 ```
 [官网](https://www.v2ray.com)
