@@ -142,3 +142,27 @@ $ xdg-user-dirs-gtk-update #更新系统语言，按照中文对应的英语进�
 $ export LANG=zh_CN.UTF-8 #重新支持中文
 ```
 [Ubuntu中文文件夹转英文](http://www.cnblogs.com/plokmju/p/Linux_ZhCNToEnUS.html)
+
+## 查看系统信息
+
+```
+# 内核版本
+uname -a
+# CPU型号
+cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
+# CPU颗数
+cat /proc/cpuinfo | grep physical | uniq -c
+```
+## 修改DNS
+`vim /etc/network/interfaces`
+`/etc/init.d/networking restart`
+```
+dns-nameservers 8.8.8.8
+```
+`vim /etc/resolv.conf`, 
+`vim /etc/resolvconf/resolv.conf.d/base`, 
+`resolvconf -u`
+```
+nameserver 8.8.8.8
+nameserver 8.8.4.4
+```

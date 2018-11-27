@@ -41,7 +41,7 @@ ip addr
 0.0.0.0 443 0.0.0.0 443
 ```
 
-[搬瓦工OpenVZ 平台 Google BBR 一键安装脚本](https://www.bawagon.com/openvz-google-bbr/)
+[OpenVZ 平台 Google BBR 一键安装脚本](https://blog.kuoruan.com/116.html)
 ```bash
 wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh
 chmod +x ovz-bbr-installer.sh
