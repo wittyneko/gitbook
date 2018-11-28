@@ -185,7 +185,9 @@ API_INTERFACE = 'mudbjson'
 
 #### 客户端使用
 
-Windows有客户端软件，以下是Linux系统的使用，在配合genpac生成个自动代理参考[http://www.jianshu.com/p/504532c362b5](http://www.jianshu.com/p/504532c362b5) 创建配置文件
+Windows有客户端软件，以下是Linux系统的使用，在配合genpac生成个自动代理
+
+创建配置文件
 
 ```text
 mkdir /etc/shadowsocksr
@@ -271,7 +273,7 @@ http://blog.csdn.net/weiqiangsu/article/details/46956977
 https://github.com/JinnLynn/genpac
 
 
-## Polipo 设置全局代理
+### Polipo 设置全局代理
 https://jingsam.github.io/2016/05/08/setup-shadowsocks-http-proxy-on-ubuntu-server.html
 
 1. 安装Polipo
@@ -301,8 +303,5 @@ serverSlots1 = 32
 
 终端配置http代理
 `export http_proxy="http://127.0.0.1:8123/"`
-
-> 本作品采用[知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议](http://creativecommons.org/licenses/by-nc-sa/4.0/)进行许可。转载请保留作者及原文链接
-
 
 
