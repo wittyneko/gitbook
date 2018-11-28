@@ -47,14 +47,14 @@ ssh root@192.168.68.1
 
 centos：
 
-```text
-yum install python-setuptools && easy_install pip
-yum install git
+```bash
+yum install -y python-setuptools && easy_install pip
+yum install -y git
 ```
 
 ubuntu/debian：
 
-```text
+```bash
 apt-get install python-pip
 apt-get install git
 ```
