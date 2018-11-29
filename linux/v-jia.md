@@ -87,6 +87,8 @@ chmod a+x go.sh
 ```
 
 ### WS-TLS
+`${}` 替换为你的配置
+
 ```sh
 # acme需要
 apt install socat curl
@@ -94,13 +96,13 @@ apt install socat curl
 curl  https://get.acme.sh | sh
 source ~/.bashrc
 # 生成证书
-~/.acme.sh/acme.sh --issue -d my.com --standalone -k ec-256
+~/.acme.sh/acme.sh --issue -d ${my.com} --standalone -k ec-256
 # 安装证书
-~/.acme.sh/acme.sh --installcert -d my.com --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
+~/.acme.sh/acme.sh --installcert -d ${my.com} --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
 # 删除
-acme.sh --remove -d my.com --ecc
+acme.sh --remove -d ${my.com} --ecc
 # 吊销
-acme.sh --revoke -d my.com --ecc
+acme.sh --revoke -d ${my.com} --ecc
 ```
 
 vim `dd` + `dG` 清空内容，`i` 插入编辑，`esc` + `:wq` 保存退出
@@ -200,7 +202,9 @@ server {
     }
 }
 ```
+
 service nginx restart
+
 ### 客户端
 ```json
 {
