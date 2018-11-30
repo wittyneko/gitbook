@@ -6,11 +6,17 @@
 # 安装更新内核Ubuntu16.04
 apt install --install-recommends linux-generic-hwe-16.04
 apt autoremove
+# 14.04
+wget http://kernel.ubuntu.com/~kernel-ppa/mainline/v4.16/linux-image-4.16.0-041600-generic_4.16.0-041600.201804012230_amd64.deb
+dpkg -i linux-image-4.*.deb
+dpkg -l | grep linux-image 
+apt-get purge <old core>
 # 重启查看内核
 update-grub
 reboot
 uname -r
 # 检测是否启用bbr
+uname -r
 lsmod | grep bbr
 # 启用bbr
 modprobe tcp_bbr
