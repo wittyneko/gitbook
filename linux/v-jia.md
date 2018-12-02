@@ -111,7 +111,7 @@ acme.sh --remove -d ${my.com} --ecc
 acme.sh --revoke -d ${my.com} --ecc
 ```
 
-vim `dd` + `dG` 清空内容，`i` 插入编辑，`esc` + `:wq` 保存退出
+vim `gg` + `dG` 清空内容，`i` 插入编辑，`esc` + `:wq` 保存退出
 
 v2ray config `vim /etc/v2ray/config.json`
 ```json
@@ -164,7 +164,7 @@ v2ray config `vim /etc/v2ray/config.json`
 }
 ```
 `systemctl restart v2ray`
-### nginx
+### Nginx
 
 [Debian 8 安装Nginx最新版本](https://www.cnblogs.com/geons/p/install_nginx.html)
 [Ubuntu 16.04系统中Nginx上配置HTTP/2简明教程](https://ywnz.com/linuxyffq/2103.html)
