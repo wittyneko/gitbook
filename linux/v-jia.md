@@ -168,12 +168,28 @@ v2ray config `vim /etc/v2ray/config.json`
 
 [Debian 8 安装Nginx最新版本](https://www.cnblogs.com/geons/p/install_nginx.html)
 [Ubuntu 16.04系统中Nginx上配置HTTP/2简明教程](https://ywnz.com/linuxyffq/2103.html)
-```
+```bash
 apt install nginx
 
 apt remove  nginx nginx-common nginx-full
 
 
+```
+
+http://nginx.org/en/linux_packages.html
+
+https://www.binss.me/blog/install-lastest-nginx-on-ubuntu/
+
+```bash
+wget http://nginx.org/keys/nginx_signing.key
+apt-key add nginx_signing.key
+apt-cache policy nginx
+apt install nginx=1.10.3-1~trusty
+```
+```
+root   /usr/share/nginx/html;
+/etc/nginx/nginx.conf
+/etc/nginx/conf.d
 ```
 `vim /etc/nginx/sites-enabled/v2ray`
 ```cfg
