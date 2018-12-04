@@ -180,6 +180,8 @@ http://nginx.org/en/linux_packages.html
 
 https://www.binss.me/blog/install-lastest-nginx-on-ubuntu/
 
+https://blog.csdn.net/yjk13703623757/article/details/78945576
+
 ```bash
 wget http://nginx.org/keys/nginx_signing.key
 apt-key add nginx_signing.key
