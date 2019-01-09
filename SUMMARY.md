@@ -11,12 +11,13 @@
 * [Linux系统安装](linux/linux-xi-tong-grub-ying-pan-an-zhuang.md)
 * [Linux 基础知识](linux/linux-ji-chu-zhi-shi.md)
 * [Linux 服务器维护](linux/linux-fu-wu-qi-wei-hu.md)
+* [树莓派](linux/shu-mei-pai.md)
 * [Ubuntu](linux/ubuntu.md)
 * [CDLinux](linux/cdlinux.md)
 * [Shell Auto](linux/shell-auto.md)
 * [酸酸乳好喝](linux/suan-suan-ru-hao-he.md)
 * [后台运行](linux/hou-tai-yun-hang.md)
-* [V +](linux/v-jia.md)
+* [树莓派](linux/shu-mei-pai.md)
 
 ## Mac
 
