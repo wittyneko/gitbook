@@ -145,9 +145,17 @@ $ export LANG=zh_CN.UTF-8 #重新支持中文
 
 ## 查看系统信息
 
-```
+```bash
 # 内核版本
 uname -a
+uname -r
+cat /proc/version
+# 版本类型
+lsb_release -a
+cat /etc/issue
+# 系统位数
+getconf LONG_BIT
+file /bin/ls
 # CPU型号
 cat /proc/cpuinfo | grep name | cut -f2 -d: | uniq -c
 # CPU颗数

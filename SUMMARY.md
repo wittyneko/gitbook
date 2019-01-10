@@ -17,7 +17,7 @@
 * [Shell Auto](linux/shell-auto.md)
 * [酸酸乳好喝](linux/suan-suan-ru-hao-he.md)
 * [后台运行](linux/hou-tai-yun-hang.md)
-* [树莓派](linux/shu-mei-pai.md)
+* [V +](linux/v-jia.md)
 
 ## Mac
 
