@@ -42,7 +42,7 @@ systemctl status frps
 配置文件`/frp/frpc.ini`
 ```
 [common]
-server_addr = origin.tutoo.xyz
+server_addr = xxxx.xx
 server_port = 7000
 token = 12345678
 
