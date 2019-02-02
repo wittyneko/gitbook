@@ -70,3 +70,22 @@ ExecStart=/frp/frpc -c /frp/frpc.ini
 WantedBy=multi-user.target
 
 ```
+管理命令
+```
+# 允许开机启动
+systemctl enable frpc
+# 启动
+systemctl start frpc
+# 重启
+systemctl restart frpc
+# 停止
+systemctl stop frpc
+# 状态
+systemctl status frpc
+```
+
+
+### 参考
+
+[Systemd 入门教程：实战篇](http://www.ruanyifeng.com/blog/2016/03/systemd-tutorial-part-two.html)
+[为 Syncer 选用守护进程工具](https://www.tidb.cc/Docs/180323-Systemd-Syncer.html)
