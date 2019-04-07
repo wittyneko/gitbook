@@ -8,13 +8,24 @@ sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/i
 ## 环境变量设置
 
 ### 加载顺序
+
 bash
-`/etc/profile`,`/etc/bashrc`,`/etc/path`,`/etc/path.d/`,`~/.bash_profile`
+
+`/etc/profile`,`/etc/bashrc`,`/etc/paths`,`/etc/paths.d/`,`~/.bash_profile`
+
 zsh
-`/etc/profile`,`/etc/zshrc`,`/etc/path`,`/etc/path.d/`,`~/.zshrc`
+
+`/etc/profile`,`/etc/zshrc`,`/etc/paths`,`/etc/paths.d/`,`~/.zshrc`
+
 ### 添加
-`sudo -s 'echo "/usr/local/sbin/mypath" > /etc/paths.d/mypath'`
-`export PATH="$PATH:<PATH 1>:<PATH 2>:<PATH 3>:...:<PATH N>"`
+
+```bash
+# profile
+export PATH="$PATH:<PATH 1>:<PATH 2>:<PATH 3>:...:<PATH N>"
+# paths
+sudo -s 'echo "/usr/local/sbin/mypath" > /etc/paths.d/mypath'
+export PATH="$PATH:<PATH 1>:<PATH 2>:<PATH 3>:...:<PATH N>"
+```
 ### 查看
 PATH
 `echo $PATH`
@@ -51,6 +62,8 @@ vim /usr/local/etc/dnsmasq.conf
 # 清除DNS缓存
 sudo killall -HUP mDNSResponder
 # 重启
+sudo brew services stop dnsmasq
+sudo brew services start dnsmasq
 sudo launchctl stop homebrew.mxcl.dnsmasq
 sudo launchctl start homebrew.mxcl.dnsmasq
 
@@ -60,10 +73,11 @@ sudo launchctl start homebrew.mxcl.dnsmasq
 `/usr/local/etc/dnsmasq.d/my.address.conf`
 ```
 # 加速GitHub访问
-address=/github.com/192.30.253.112,192.30.253.113
+address=/github.com/192.30.253.112
+address=/github.com/192.30.253.113
 ```
 
-
+[ipaddress ip-lookup](https://www.ipaddress.com/ip-lookup)
 [dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list)
 [利用Dnsmasq 部署DNS 服务- 运维之美](https://www.hi-linux.com/posts/30947.html)
 [Mac上用dnsmasq配置DNS服务器](https://blog.csdn.net/lovenjoe/article/details/51210937)
