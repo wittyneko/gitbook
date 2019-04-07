@@ -5,6 +5,69 @@
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
+## 环境变量设置
+
+### 加载顺序
+bash
+`/etc/profile`,`/etc/bashrc`,`/etc/path`,`/etc/path.d/`,`~/.bash_profile`
+zsh
+`/etc/profile`,`/etc/zshrc`,`/etc/path`,`/etc/path.d/`,`~/.zshrc`
+### 添加
+`sudo -s 'echo "/usr/local/sbin/mypath" > /etc/paths.d/mypath'`
+`export PATH="$PATH:<PATH 1>:<PATH 2>:<PATH 3>:...:<PATH N>"`
+### 查看
+PATH
+`echo $PATH`
+
+内置SHELL
+`cat shells`
+### 我的配置
+
+```bash
+# Go
+export GOROOT=/usr/local/Cellar/go/1.12/libexec
+export GOPATH=/Users/wittyneko/go
+export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN:$GOROOT/bin
+
+# Android
+export ANDROID_HOME=~/Library/Android/sdk
+export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# Flutter
+export PUB_HOSTED_URL=https://pub.flutter-io.cn
+export FLUTTER_STORAGE_BASE_URL=https://storage.flutter-io.cn
+export FLUTTER_HOME=~/Library/flutter
+export PATH=$PATH:$FLUTTER_HOME/bin
+```
+[macOS/Linux 环境变量设置- 知乎](https://zhuanlan.zhihu.com/p/25976099)
+
+## Dnsmasq
+```
+brew install dnsmasq
+vim /usr/local/etc/resolv.dnsmasq.conf
+vim /usr/local/etc/dnsmasq.conf
+# /usr/local/etc/dnsmasq.d/*
+# 清除DNS缓存
+sudo killall -HUP mDNSResponder
+# 重启
+sudo launchctl stop homebrew.mxcl.dnsmasq
+sudo launchctl start homebrew.mxcl.dnsmasq
+
+```
+
+### 自定义解析
+`/usr/local/etc/dnsmasq.d/my.address.conf`
+```
+# 加速GitHub访问
+address=/github.com/192.30.253.112,192.30.253.113
+```
+
+
+[dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list)
+[利用Dnsmasq 部署DNS 服务- 运维之美](https://www.hi-linux.com/posts/30947.html)
+[Mac上用dnsmasq配置DNS服务器](https://blog.csdn.net/lovenjoe/article/details/51210937)
+
 ## site
 
 [cleanmymac-3](https://macpaw.com/cleanmymac-3)、
