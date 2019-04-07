@@ -138,8 +138,7 @@ sudo tmutil setdestination -p /Volumes/backup/
 
 ## 下载
 
-[除了会员，别无选择？6 款 Mac 下载工具帮你加速
-](https://sspai.com/post/41174)
+[除了会员，别无选择？6 款 Mac 下载工具帮你加速](https://sspai.com/post/41174)
 
 `Folx 5`、`FDM`、`Leech 3`、`uTorrent`、`Transmission`、`Aria2`
 
