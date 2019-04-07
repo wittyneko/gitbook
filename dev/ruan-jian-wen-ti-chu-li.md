@@ -3,7 +3,8 @@
 ## Sysnergy2
 
 ### 失效重启
-```sh
+
+```bash
 # Linux
 sudo systemctl status synergy
 sudo systemctl stop synergy
@@ -22,3 +23,4 @@ killall synergy-service
 [Synergy 2 on Linux - Installs old version - General Discussion](https://symless.com/forums/topic/5212-synergy-2-on-linux-installs-old-version/)
 
 [Synergy 2: How to uninstall and reinstall](https://symless.com/forums/topic/4519-synergy-2-how-to-uninstall-and-reinstall/)
+

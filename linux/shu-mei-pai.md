@@ -4,7 +4,7 @@
 
 修改配置 `vim /etc/wpa_supplicant/wpa_supplicant.conf`
 
-```conf
+```text
 ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
 update_config=1
 country=CN
@@ -39,7 +39,7 @@ network={
 
 ## 创建热点
 
-安装 [create_ap](https://github.com/oblique/create_ap.git)
+安装 [create\_ap](https://github.com/oblique/create_ap.git)
 
 ```bash
 # 安装依赖
@@ -48,10 +48,13 @@ git clone https://github.com/oblique/create_ap.git
 cd create_ap
 make install
 ```
+
 修改配置 `vim /etc/create_ap.conf`
 
-```conf
+```text
 SSID=wifi名称
 PASSPHRASE=密码
 ```
+
 重启服务 `service create_ap restart`
+

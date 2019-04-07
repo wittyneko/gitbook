@@ -1,8 +1,10 @@
-# V+
+# V +
 
-### BBR
- [开启TCP BBR拥塞控制算法](https://github.com/iMeiji/shadowsocks_install/wiki/%E5%BC%80%E5%90%AFTCP-BBR%E6%8B%A5%E5%A1%9E%E6%8E%A7%E5%88%B6%E7%AE%97%E6%B3%95)
-```sh
+## BBR
+
+[开启TCP BBR拥塞控制算法](https://github.com/iMeiji/shadowsocks_install/wiki/开启TCP-BBR拥塞控制算法)
+
+```bash
 # 安装更新内核Ubuntu16.04
 apt install --install-recommends linux-generic-hwe-16.04
 apt autoremove
@@ -30,6 +32,7 @@ sysctl net.ipv4.tcp_congestion_control
 ```
 
 [OpenVZ 平台 Google BBR 加速 TCP 之 Rinetd 方式](https://blog.kuoruan.com/119.html)
+
 ```bash
 curl https://raw.githubusercontent.com/linhua55/lkl_study/master/get-rinetd.sh | bash
 iptables -t raw -nL
@@ -37,17 +40,18 @@ iptables -t raw -nL
 vi /etc/rinetd-bbr.conf
 ip addr
 /usr/bin/rinetd-bbr -f -c /etc/rinetd-bbr.conf raw venet0:0 &
-
 ```
+
 /etc/rinetd-bbr.conf
 
-```
+```text
 # bindadress bindport connectaddress connectport
- 
+
 0.0.0.0 443 0.0.0.0 443
 ```
 
 [OpenVZ 平台 Google BBR 一键安装脚本](https://blog.kuoruan.com/116.html)
+
 ```bash
 wget https://raw.githubusercontent.com/kuoruan/shell-scripts/master/ovz-bbr/ovz-bbr-installer.sh
 chmod +x ovz-bbr-installer.sh
@@ -64,25 +68,25 @@ vi /usr/local/haproxy-lkl/etc/port-rules
 ./ovz-bbr-installer.sh uninstall
 ```
 
+## 锐速
 
-### 锐速
-
-https://www.moerats.com/archives/387/
+[https://www.moerats.com/archives/387/](https://www.moerats.com/archives/387/)
 
 ```bash
 wget -N --no-check-certificate "https://raw.githubusercontent.com/chiakge/Linux-NetSpeed/master/tcp.sh" && chmod +x tcp.sh && ./tcp.sh
 ```
 
-https://xpsss.com/859.html
-```
+[https://xpsss.com/859.html](https://xpsss.com/859.html)
+
+```text
 wget http://ftp.al/appex.sh
 chmod +x appex.sh
 bash appex.sh install
 ```
 
-### 安装v2
+## 安装v2
 
-```sh
+```bash
 bash <(curl -L -s https://install.direct/go.sh)
 bash <(wget https://install.direct/go.sh -O -)
 
@@ -92,10 +96,11 @@ chmod a+x go.sh
 ./go.sh --version 4.5.0
 ```
 
-### WS-TLS
+## WS-TLS
+
 `${}` 替换为你的配置
 
-```sh
+```bash
 # acme需要
 apt install socat curl
 # 安装acme
@@ -114,7 +119,8 @@ acme.sh --revoke -d ${my.com} --ecc
 vim `gg` + `dG` 清空内容，`i` 插入编辑，`esc` + `:wq` 保存退出
 
 v2ray config `vim /etc/v2ray/config.json`
-```json
+
+```javascript
 {
   "inbounds": [
     {
@@ -163,24 +169,24 @@ v2ray config `vim /etc/v2ray/config.json`
   }
 }
 ```
-`systemctl restart v2ray`
-### Nginx
 
-[Debian 8 安装Nginx最新版本](https://www.cnblogs.com/geons/p/install_nginx.html)
-[Ubuntu 16.04系统中Nginx上配置HTTP/2简明教程](https://ywnz.com/linuxyffq/2103.html)
+`systemctl restart v2ray`
+
+## Nginx
+
+[Debian 8 安装Nginx最新版本](https://www.cnblogs.com/geons/p/install_nginx.html) [Ubuntu 16.04系统中Nginx上配置HTTP/2简明教程](https://ywnz.com/linuxyffq/2103.html)
+
 ```bash
 apt install nginx
 
 apt remove  nginx nginx-common nginx-full
-
-
 ```
 
-http://nginx.org/en/linux_packages.html
+[http://nginx.org/en/linux\_packages.html](http://nginx.org/en/linux_packages.html)
 
-https://www.binss.me/blog/install-lastest-nginx-on-ubuntu/
+[https://www.binss.me/blog/install-lastest-nginx-on-ubuntu/](https://www.binss.me/blog/install-lastest-nginx-on-ubuntu/)
 
-https://blog.csdn.net/yjk13703623757/article/details/78945576
+[https://blog.csdn.net/yjk13703623757/article/details/78945576](https://blog.csdn.net/yjk13703623757/article/details/78945576)
 
 ```bash
 wget http://nginx.org/keys/nginx_signing.key
@@ -188,13 +194,16 @@ apt-key add nginx_signing.key
 apt-cache policy nginx
 apt install nginx=1.10.3-1~trusty
 ```
-```
+
+```text
 root   /usr/share/nginx/html;
 /etc/nginx/nginx.conf
 /etc/nginx/conf.d
 ```
+
 `vim /etc/nginx/sites-enabled/v2ray`
-```cfg
+
+```text
 server {
     listen 443 ssl default_server;
     listen [::]:443 ssl default_server;
@@ -229,8 +238,9 @@ server {
 
 service nginx restart
 
-### 客户端
-```json
+## 客户端
+
+```javascript
 {
     "inbounds": [
         {
@@ -351,5 +361,6 @@ service nginx restart
     }
 }
 ```
-[官网](https://www.v2ray.com)
-[V2Ray 配置指南](https://toutyrater.github.io)
+
+[官网](https://www.v2ray.com) [V2Ray 配置指南](https://toutyrater.github.io)
+
