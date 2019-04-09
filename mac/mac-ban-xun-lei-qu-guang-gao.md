@@ -35,7 +35,7 @@ chmod a-x /Applications/Thunder.app/Contents/PlugIns/xiazaibao.xlplugin
 chmod a-x /Applications/Thunder.app/Contents/PlugIns/xlbrowser.xlplugin
 ```
 
-#### 参考
+## 参考
 
 [删除Mac版迅雷垃圾组件 - 知乎专栏](https://zhuanlan.zhihu.com/p/26882055)
 

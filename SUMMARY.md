@@ -5,6 +5,8 @@
 ## Android
 
 * [Android Studio Git使用教程](android/android-studio-git-shi-yong-jiao-cheng.md)
+* [Android Studio 版本更新历史](android/android-studio-ban-ben-geng-xin-li-shi.md)
+* [Maven 依赖管理](android/maven-yi-lai-guan-li.md)
 
 ## Linux
 

@@ -1,13 +1,13 @@
 # Git 常用命令
 
-### 初始全局配置
+## 初始全局配置
 
 ```text
 git config --global user.name "wittyneko"
 git config --global user.email "wittytutu@gmail.com"
 ```
 
-### 生成SSH key并测试连接
+## 生成SSH key并测试连接
 
 ```text
 ssh-keygen -t rsa -C "wittytutu@gmail.com"
@@ -16,7 +16,7 @@ ssh -T git@github.com
 ssh -T git@git.oschina.net
 ```
 
-### 断点续传
+## 断点续传
 
 `git clone`不支持断点续传，可以使用支持断点续传的`git fetch`
 
@@ -27,7 +27,7 @@ git fetch git://mirrors.ustc.edu.cn/linux.git
 git checkout FETCH_HEAD
 ```
 
-### 远程
+## 远程
 
 推送`master`分支到`origin`远程仓库
 
@@ -50,11 +50,11 @@ git push origin HEAD --force
 git push origin HEAD:master --force
 ```
 
-#### 同时push多个远程仓库
+### 同时push多个远程仓库
 
 [终端下如何配置 git 使其可以同时 push 到两个远程仓库？](https://segmentfault.com/q/1010000000764992)
 
-### 分支
+## 分支
 
 查看分支
 
@@ -80,12 +80,12 @@ git remote show origin
 git remote prune origin
 ```
 
-### 记录
+## 记录
 
 git rm --cached logs/xx.log 删除已提交文件记录  
 git log -v
 
-### 其他
+## 其他
 
 //添加gradle项目结构  
 git init  
