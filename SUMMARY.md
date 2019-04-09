@@ -6,6 +6,11 @@
 
 * [基础](android/ji-chu/README.md)
   * [文件读写](android/ji-chu/wen-jian-du-xie.md)
+  * [View](android/ji-chu/view.md)
+  * [ViewGroup](android/ji-chu/viewgroup.md)
+  * [Drawable](android/ji-chu/drawable/README.md)
+    * [Shape](android/ji-chu/drawable/shape.md)
+    * [Selector](android/ji-chu/drawable/selector.md)
 * [Android Studio Git使用教程](android/android-studio-git-shi-yong-jiao-cheng.md)
 * [Android Studio 版本更新历史](android/android-studio-ban-ben-geng-xin-li-shi.md)
 * [Maven 依赖管理](android/maven-yi-lai-guan-li.md)
