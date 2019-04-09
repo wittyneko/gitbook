@@ -1,6 +1,6 @@
 # Android Studio 版本更新历史
 
-3.2 \(2018/09\)
+## 3.2 \(2018/09\)
 
 * 新增**Assistant**面板，方便获取更新信息
 * 支持 **Android Jetpack** 
