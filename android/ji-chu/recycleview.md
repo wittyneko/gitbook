@@ -2,7 +2,7 @@
 
 ## Adapter
 
-**最佳推荐**
+#### **最佳推荐**
 
 [CymChad/BaseRecyclerViewAdapterHelper](https://github.com/CymChad/BaseRecyclerViewAdapterHelper)
 
@@ -16,11 +16,11 @@
 
 [evant/binding-collection-adapter](https://github.com/evant/binding-collection-adapter)
 
-**期待后续**
+#### **期待后续**
 
  [MEiDIK/SlimAdapter](https://github.com/MEiDIK/SlimAdapter) 简洁类似 AdapterDelegates
 
-**不推荐**
+#### **不推荐**
 
 [luizgrp/SectionedRecyclerViewAdapter](https://github.com/luizgrp/SectionedRecyclerViewAdapter) 过度依赖 Section 不方便扩展
 
@@ -110,13 +110,13 @@
 
 [jaychang0917/SimpleRecyclerView](https://github.com/jaychang0917/SimpleRecyclerView)
 
-**Banner**
+#### **Banner**
 
  [rbro112/Android-Indefinite-Pager-Indicator](https://github.com/rbro112/Android-Indefinite-Pager-Indicator) 
 
 [renjianan/RecyclerBanner](https://github.com/renjianan/RecyclerBanner)
 
-**Index**
+#### **Index**
 
 [jiang111/IndexRecyclerView](https://github.com/jiang111/IndexRecyclerView)
 
@@ -128,7 +128,7 @@
 
  [turing-tech/MaterialScrollBar](https://github.com/turing-tech/MaterialScrollBar)
 
-**table**
+#### **table**
 
  [zhouchaoyuan/excelPanel](https://github.com/zhouchaoyuan/excelPanel) 
 
@@ -140,7 +140,7 @@
 
 [lisawray/groupie](https://github.com/lisawray/groupie)
 
-**Video** 
+#### **Video** 
 
 [waynell/VideoListPlayer](https://github.com/waynell/VideoListPlayer)
 

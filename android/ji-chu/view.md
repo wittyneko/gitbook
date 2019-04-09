@@ -482,7 +482,13 @@ View的属性特别多不可能全部了解记忆，只需要记住一些常用�
       <td style="text-align:left">&#x6ED1;&#x52A8;&#x6307;&#x793A;&#x5668;</td>
     </tr>
   </tbody>
-</table>附： [android之View属性](http://www.jianshu.com/p/875a9adb4952) [Android View 组件](http://www.bozhiyue.com/anroid/wenzhang/2016/0516/103333.html) \[Android layout属性详细说明\] \([http://www.cnblogs.com/skywang12345/archive/2013/06/15/AndroidAttr.html](http://www.cnblogs.com/skywang12345/archive/2013/06/15/AndroidAttr.html)\) [\[教程\] 【也说Android开发】第三讲 Layout文件属性讲解](http://blog.chinaunix.net/uid-29134536-id-3982048.html)
+</table>附： 
+
+[android之View属性](http://www.jianshu.com/p/875a9adb4952)  
+[Android View 组件](http://www.bozhiyue.com/anroid/wenzhang/2016/0516/103333.html)  
+[Android layout属性详细说明](http://www.cnblogs.com/skywang12345/archive/2013/06/15/AndroidAttr.html)  
+ [\[教程\] 【也说Android开发】第三讲 Layout文件属性讲解](http://blog.chinaunix.net/uid-29134536-id-3982048.html)  
+
 
 ## 常用方法
 
