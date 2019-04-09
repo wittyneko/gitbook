@@ -11,6 +11,15 @@
 * [RecyclerView](recycleview.md)
 * [Databinding](databinding.md)
 
+## 系列教材
+
+* [**湖前琴亭**](https://blog.csdn.net/aqi00)
+  * [Android开发笔记（序）写在前面的目录](https://blog.csdn.net/aqi00/article/details/50012511)  
+  * [Kotlin入门教程——目录索引](https://blog.csdn.net/aqi00/article/details/75283548)  
+  * [Android开发笔记](https://blog.csdn.net/aqi00/column/info/android-aqi00)  
+  * [Android常见问题处理集锦](https://blog.csdn.net/aqi00/column/info/16645)  
+  * [Kotlin开发App快速入门](https://blog.csdn.net/aqi00/column/info/16760)  
+
 ## 学习流程
 
 [一张思维导图，告诉你Android新手如何快速入门](http://www.jianshu.com/p/94b6877d0ea6)  
