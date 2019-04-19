@@ -55,6 +55,8 @@ git push origin HEAD:master --force
 [终端下如何配置 git 使其可以同时 push 到两个远程仓库？](https://segmentfault.com/q/1010000000764992)
 
 ## 代理配置
+1, https.proxy设置是无用的, 只需要设置http.proxy  
+2, socks5h://更好, 远端DNS  
 
 ### http.proxy
 
@@ -80,21 +82,17 @@ git config --global http.sslVerify false
 
 创建`socks5_proxy_wrapper`
 
-{% tabs %}
-{% tab title="connect " %}
+1. connect
 ```bash
 #!/bin/sh
 connect -S 127.0.0.1:8088 "$@"
 ```
-{% endtab %}
-
-{% tab title="ncat" %}
+2. ncat
 ```bash
 #!/bin/sh
 /usr/bin/ncat --proxy 127.0.0.1:1081 --proxy-type socks5 "$@"
 ```
-{% endtab %}
-{% endtabs %}
+
 
 ```bash
 # 配置 gitProxy 
@@ -106,12 +104,9 @@ export GIT_PROXY_COMMAND="/opt/bin/socks5_proxy_wrapper"
 
 ### ssh
 
-{% tabs %}
-{% tab title="~/.ssh/config" %}
-Mac & Linux `~/.ssh/config`  
-1, https.proxy设置是无用的, 只需要设置http.proxy  
-2, socks5h://更好, 远端DNS
+1, ~/.ssh/config  
 
+Mac & Linux 编辑`~/.ssh/config`  
 ```bash
 ost github.com
     User git
@@ -126,9 +121,8 @@ Host github.com
     User git
     ProxyCommand connect -S 127.0.0.1:1086 %h %p
 ```
-{% endtab %}
 
-{% tab title="GIT\_SSH" %}
+2, export GIT\_SSH
 创建 `socks5_proxy_ssh`
 
 ```text
@@ -139,8 +133,6 @@ ssh -o ProxyCommand="/path/to/socks5_proxy_wrapper %h %p" "$@"
 ```text
 export GIT_SSH="/path/to/socks5_proxy_ssh"
 ```
-{% endtab %}
-{% endtabs %}
 
 [git 设置和取消代理](https://gist.github.com/laispace/666dd7b27e9116faece6)  
 [Windows下git使用代理服务器的设置方法](http://blog.useasp.net/archive/2015/08/26/config-git-proxy-settings-on-windows.aspx)  
