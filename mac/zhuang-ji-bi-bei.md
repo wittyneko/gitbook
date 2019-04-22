@@ -6,6 +6,16 @@
 sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ```
 
+## 终端 App Store
+
+```text
+brew install mas
+```
+
+## site
+
+[cleanmymac-3](https://macpaw.com/cleanmymac-3)、 [synergy2](https://symless.com/synergy/downloads/list/s2)、 [eudic](https://www.eudic.net/eudic/mac_dictionary.aspx)
+
 ## 环境变量设置
 
 ### 加载顺序
@@ -82,19 +92,10 @@ address=/github.com/192.30.253.112
 address=/github.com/192.30.253.113
 ```
 
-[ipaddress ip-lookup](https://www.ipaddress.com/ip-lookup) [dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list) [利用Dnsmasq 部署DNS 服务- 运维之美](https://www.hi-linux.com/posts/30947.html) [Mac上用dnsmasq配置DNS服务器](https://blog.csdn.net/lovenjoe/article/details/51210937)
-
-## site
-
-[cleanmymac-3](https://macpaw.com/cleanmymac-3)、 [synergy2](https://symless.com/synergy/downloads/list/s2)、 [eudic](https://www.eudic.net/eudic/mac_dictionary.aspx)
-
-## 压缩
-
-[Mac 压缩 / 解压缩工具解决方案](https://sspai.com/post/46943)
-
-* The Unarchiver `brew cask install the-unarchiver`
-* Keka `brew cask install keka kekadefaultapp`
-* WinRAR `brew cask install rar`
+[ipaddress ip-lookup](https://www.ipaddress.com/ip-lookup)  
+[dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list)   
+[利用Dnsmasq 部署DNS 服务- 运维之美](https://www.hi-linux.com/posts/30947.html)  
+[Mac上用dnsmasq配置DNS服务器](https://blog.csdn.net/lovenjoe/article/details/51210937)
 
 ## 预览增强
 
@@ -115,11 +116,20 @@ brew cask install webpquicklook
 brew cask install hetimazipql
 ```
 
-## 终端 App Store
+## 压缩
 
-```text
-brew install mas
+[Mac 压缩 / 解压缩工具解决方案](https://sspai.com/post/46943)
+
+* The Unarchiver `brew cask install the-unarchiver`
+* Keka `brew cask install keka kekadefaultapp`
+* WinRAR `brew cask install rar`
+
+## NTFS
+
+```bash
+brew cask install mounty
 ```
+[Mounty for NTFS](https://mounty.app)
 
 ## 文件备份
 
