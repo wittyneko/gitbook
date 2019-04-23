@@ -27,7 +27,8 @@
 
 ## 数据存储
 
-[SQLite 教程](http://www.runoob.com/sqlite/sqlite-tutorial.html) [Android数据库SQLite的使用示例](http://www.open-open.com/lib/view/open1325160000889.html)  
+[SQLite 教程](http://www.runoob.com/sqlite/sqlite-tutorial.html)  
+[Android数据库SQLite的使用示例](http://www.open-open.com/lib/view/open1325160000889.html)  
 [Android数据库高手秘籍\(一\)——SQLite命令](http://blog.csdn.net/guolin_blog/article/details/38461239)
 
 ## 资源访问
