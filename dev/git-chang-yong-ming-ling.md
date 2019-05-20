@@ -54,9 +54,32 @@ git push origin HEAD:master --force
 
 [终端下如何配置 git 使其可以同时 push 到两个远程仓库？](https://segmentfault.com/q/1010000000764992)
 
+## Diff & Merge
+
+[Helix Visual Merge Tool \(P4Merge\)](https://www.perforce.com/zh-hans/perforce/product/10)
+
+### **配置p4merge作为Git的diff tool**
+
+```bash
+git config --global diff.tool p4merge
+git config --global difftool.p4merge.path "D:\Program\Perforce\p4merge.exe"
+git config --global difftool.prompt false
+```
+
+### **配置p4merge作为git的merge tool**
+
+```bash
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path "D:\Program\Perforce\p4merge.exe"
+git config --global mergetool.prompt false
+```
+
+[Git - 使用命令和P4Merge进行diff](https://www.cnblogs.com/cgzl/p/8597066.html)
+
 ## 代理配置
+
 1, https.proxy设置是无用的, 只需要设置http.proxy  
-2, socks5h://更好, 远端DNS  
+2, socks5h://更好, 远端DNS
 
 ### http.proxy
 
@@ -83,16 +106,18 @@ git config --global http.sslVerify false
 创建`socks5_proxy_wrapper`
 
 1. connect
-```bash
-#!/bin/sh
-connect -S 127.0.0.1:8088 "$@"
-```
-2. ncat
-```bash
-#!/bin/sh
-/usr/bin/ncat --proxy 127.0.0.1:1081 --proxy-type socks5 "$@"
-```
 
+   ```bash
+   #!/bin/sh
+   connect -S 127.0.0.1:8088 "$@"
+   ```
+
+2. ncat
+
+   ```bash
+   #!/bin/sh
+   /usr/bin/ncat --proxy 127.0.0.1:1081 --proxy-type socks5 "$@"
+   ```
 
 ```bash
 # 配置 gitProxy 
@@ -104,9 +129,10 @@ export GIT_PROXY_COMMAND="/opt/bin/socks5_proxy_wrapper"
 
 ### ssh
 
-1, ~/.ssh/config  
+1, ~/.ssh/config
 
-Mac & Linux 编辑`~/.ssh/config`  
+Mac & Linux 编辑`~/.ssh/config`
+
 ```bash
 ost github.com
     User git
@@ -122,8 +148,7 @@ Host github.com
     ProxyCommand connect -S 127.0.0.1:1086 %h %p
 ```
 
-2, export GIT\_SSH
-创建 `socks5_proxy_ssh`
+2, export GIT\_SSH 创建 `socks5_proxy_ssh`
 
 ```text
 #!/bin/sh

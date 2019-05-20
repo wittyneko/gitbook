@@ -93,7 +93,7 @@ address=/github.com/192.30.253.113
 ```
 
 [ipaddress ip-lookup](https://www.ipaddress.com/ip-lookup)  
-[dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list)   
+[dnsmasq-china-list](https://github.com/felixonmars/dnsmasq-china-list)  
 [利用Dnsmasq 部署DNS 服务- 运维之美](https://www.hi-linux.com/posts/30947.html)  
 [Mac上用dnsmasq配置DNS服务器](https://blog.csdn.net/lovenjoe/article/details/51210937)
 
@@ -129,6 +129,7 @@ brew cask install hetimazipql
 ```bash
 brew cask install mounty
 ```
+
 [Mounty for NTFS](https://mounty.app)
 
 ## 文件备份
