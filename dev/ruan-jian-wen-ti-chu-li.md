@@ -24,3 +24,4 @@ killall synergy-service
 
 [Synergy 2: How to uninstall and reinstall](https://symless.com/forums/topic/4519-synergy-2-how-to-uninstall-and-reinstall/)
 
+<iframe src="https://plugins.gitbook.com/plugin/url-embed" style="width: 100%; height: 600px; border: 0px none;"></iframe>
