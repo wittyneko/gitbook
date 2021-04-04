@@ -119,13 +119,13 @@ sudo tar -zxvf jdk-7u60-linux-x64.gz -C /usr/lib/jvm
 
 ### 软件管理
 
- **右键添加命令窗口** 
+**右键添加命令窗口**
 
 ```text
 sudo apt-get install nautilus-open-terminal
 ```
 
- **更新应用** 
+**更新应用**
 
 ```text
 # 源
@@ -140,7 +140,7 @@ sudo apt upgrade
 sudo apt-get dist-upgrade
 ```
 
- **安装应用** 
+**安装应用**
 
 ```text
 1.GDebi安装程序
@@ -156,7 +156,7 @@ sudo apt-get autoremove --purge software-center
 sudo apt-get install -f software-center
 ```
 
- **卸载应用** 
+**卸载应用**
 
 ```text
 1.Synaptic软件包管理器
@@ -175,21 +175,21 @@ $sudo dpkg -r <programname>
 3.应用商店，16.04已废弃
 ```
 
- **新立德软件管理** 
+**新立德软件管理**
 
 ```text
 sudo apt-get install synaptic
 ```
 
- **安装Window模拟环境** 
+**安装Window模拟环境**
 
 ```text
 sudo apt-get install wine
 ```
 
- **Google 拼音**  `sudo apt-get install ibus-googlepinyin` [ubuntu安装google 输入法](http://www.cnblogs.com/duanguyuan/p/3480162.html)
+**Google 拼音** `sudo apt-get install ibus-googlepinyin` [ubuntu安装google 输入法](http://www.cnblogs.com/duanguyuan/p/3480162.html)
 
- **Chrome浏览器** 
+**Chrome浏览器**
 
 1\). Ubuntu
 
@@ -214,7 +214,7 @@ wget -q -O - https://dl.google.com/linux/linux_signing_key.pub | sudo apt-key ad
 sudo apt-get install google-chrome-stable
 ```
 
- **安装JDK** 
+**安装JDK**
 
 关于JDK，Linux 有OpenJDK 和 HotSpot，OpenJDK可直接命令安装，HotSpot 只能到oracle网站下载 [Ubuntu 安装 JDK 7 / JDK8 的两种方式](http://www.cnblogs.com/a2211009/p/4265225.html)
 
@@ -223,7 +223,7 @@ sudo apt-get install openjdk-7-jdk
 sudo apt-get install openjdk-8-jdk
 ```
 
- **JDK配置环境变量** 
+**JDK配置环境变量**
 
 1\). 加入环境变量（修改/etc/profile）
 
@@ -262,7 +262,7 @@ sudo update-alternatives --config javaws
 
 [Ubuntu 15.04 安装JDK并配置成为默认的JDK](http://www.linuxidc.com/Linux/2015-09/122689.htm)
 
- **Genymotion 模拟器安装** 
+**Genymotion 模拟器安装**
 
 ```text
 sudo apt install virtualbox-qt
@@ -270,7 +270,7 @@ sudo chmod u+x genymotion-2.8.1_x64.bin
 sudo ./genymotion-2.8.1_x64.bin
 ```
 
- **SVN** 
+**SVN**
 
 ```text
 sudo apt-get install subversion

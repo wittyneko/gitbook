@@ -1,6 +1,6 @@
 # Android Studio Git使用教程
 
-### 创建仓库
+## 创建仓库
 
 在GitHub上创建一个新工程，这里选择了初始化一个README文件作为测试
 
@@ -14,7 +14,7 @@ Git的安装配置就不说明了，参考[http://git.oschina.net/oschina/git-os
 
 输入`git clone 仓库地址`克隆远程仓库，`Shift+Insert`可以粘贴文本 ![git clone.png](http://upload-images.jianshu.io/upload_images/1845254-53d7b042a66fabe2.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
-### 添加忽略文件ignore
+## 添加忽略文件ignore
 
 忽略文件可以在创建仓库时生成，不过最好自己创建了解下，系统创建可能有些编译文件没有给过滤忽略
 
@@ -81,7 +81,7 @@ proguard/
 *.jks
 ```
 
-### 冲突文件处理
+## 冲突文件处理
 
 所谓冲突文件就是，两个人同时修改了同一个文件，在合并时Git不能自动处理需要用户自己来合并。以README文件为例，这里直接在GitHub上编辑加入一句`origin add message`
 
@@ -123,7 +123,7 @@ proguard/
 
 ![Log.png](http://upload-images.jianshu.io/upload_images/1845254-e7a4cee143203895.png?imageMogr2/auto-orient/strip|imageView2/2/w/1240)
 
-### 版本回退
+## 版本回退
 
 首先很重要的一点，回退前记得要提交到远程以免丢失修改内容。
 
@@ -136,6 +136,4 @@ proguard/
 对应的git 命令操作参考[git reset soft,hard,mixed之区别深解](http://www.cnblogs.com/kidsitcn/p/4513297.html)，引用评论的总结
 
 > 简单总结一下，其实就是--soft 、--mixed以及--hard是三个恢复等级。使用--soft就仅仅将头指针恢复，已经add的缓存以及工作空间的所有东西都不变。如果使用--mixed，就将头恢复掉，已经add的缓存也会丢失掉，工作空间的代码什么的是不变的。如果使用--hard，那么一切就全都恢复了，头变，aad的缓存消失，代码什么的也恢复到以前状态
-
-
 

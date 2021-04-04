@@ -1,13 +1,13 @@
 # Git 常用命令
 
-### 初始全局配置
+## 初始全局配置
 
 ```text
 git config --global user.name "wittyneko"
 git config --global user.email "wittytutu@gmail.com"
 ```
 
-### 生成SSH key并测试连接
+## 生成SSH key并测试连接
 
 ```text
 ssh-keygen -t rsa -C "wittytutu@gmail.com"
@@ -16,7 +16,7 @@ ssh -T git@github.com
 ssh -T git@git.oschina.net
 ```
 
-### 断点续传
+## 断点续传
 
 `git clone`不支持断点续传，可以使用支持断点续传的`git fetch`
 
@@ -27,7 +27,7 @@ git fetch git://mirrors.ustc.edu.cn/linux.git
 git checkout FETCH_HEAD
 ```
 
-### 远程
+## 远程
 
 推送`master`分支到`origin`远程仓库
 
@@ -50,11 +50,120 @@ git push origin HEAD --force
 git push origin HEAD:master --force
 ```
 
-#### 同时push多个远程仓库
+### 同时push多个远程仓库
 
 [终端下如何配置 git 使其可以同时 push 到两个远程仓库？](https://segmentfault.com/q/1010000000764992)
 
-### 分支
+## Diff & Merge
+
+[Helix Visual Merge Tool \(P4Merge\)](https://www.perforce.com/zh-hans/perforce/product/10)
+
+### **配置p4merge作为Git的diff tool**
+
+```bash
+git config --global diff.tool p4merge
+git config --global difftool.p4merge.path "D:\Program\Perforce\p4merge.exe"
+git config --global difftool.prompt false
+```
+
+### **配置p4merge作为git的merge tool**
+
+```bash
+git config --global merge.tool p4merge
+git config --global mergetool.p4merge.path "D:\Program\Perforce\p4merge.exe"
+git config --global mergetool.prompt false
+```
+
+[Git - 使用命令和P4Merge进行diff](https://www.cnblogs.com/cgzl/p/8597066.html)
+
+## 代理配置
+
+1, https.proxy设置是无用的, 只需要设置http.proxy  
+2, socks5h://更好, 远端DNS
+
+### http.proxy
+
+```bash
+# 当前项目
+git config http.proxy socks5://127.0.0.1:10808
+git config http.proxy http://127.0.0.1:8088
+git config http.proxy http://username:password@127.0.0.1:8088
+# 全局
+git config --global http.proxy socks5://127.0.0.1:10808
+git config --global http.proxy http://127.0.0.1:8088
+# 删除代理
+git config --global --unset http.proxy
+#只对github.com代理
+git config --global http.https://github.com.proxy socks5://127.0.0.1:10808
+git config --global --unset http.https://github.com.proxy)
+
+# 关闭证书验证
+git config --global http.sslVerify false
+```
+
+### core.gitProxy
+
+创建`socks5_proxy_wrapper`
+
+1. connect
+
+   ```bash
+   #!/bin/sh
+   connect -S 127.0.0.1:8088 "$@"
+   ```
+
+2. ncat
+
+   ```bash
+   #!/bin/sh
+   /usr/bin/ncat --proxy 127.0.0.1:1081 --proxy-type socks5 "$@"
+   ```
+
+```bash
+# 配置 gitProxy 
+git config --global core.gitProxy '/opt/bin/socks5_proxy_wrapper'
+git config --global core.gitProxy '/opt/bin/socks5_proxy_wrapper for git.kernel.org'
+或 export GIT_PROXY_COMMAND
+export GIT_PROXY_COMMAND="/opt/bin/socks5_proxy_wrapper"
+```
+
+### ssh
+
+1, ~/.ssh/config
+
+Mac & Linux 编辑`~/.ssh/config`
+
+```bash
+ost github.com
+    User git
+    ProxyCommand nc -v -x 127.0.0.1:1086 %h %p
+    # ProxyCommand socat - PROXY:127.0.0.1:%h:%p,proxyport=6667
+```
+
+Windows
+
+```bash
+Host github.com
+    User git
+    ProxyCommand connect -S 127.0.0.1:1086 %h %p
+```
+
+2, export GIT\_SSH 创建 `socks5_proxy_ssh`
+
+```text
+#!/bin/sh
+ssh -o ProxyCommand="/path/to/socks5_proxy_wrapper %h %p" "$@"
+```
+
+```text
+export GIT_SSH="/path/to/socks5_proxy_ssh"
+```
+
+[git 设置和取消代理](https://gist.github.com/laispace/666dd7b27e9116faece6)  
+[Windows下git使用代理服务器的设置方法](http://blog.useasp.net/archive/2015/08/26/config-git-proxy-settings-on-windows.aspx)  
+[\[整理\]为git 和ssh 设置socks5 协议的代理](https://blog.systemctl.top/2017/2017-09-28_set-proxy-for-git-and-ssh-with-socks5/)
+
+## 分支
 
 查看分支
 
@@ -80,12 +189,12 @@ git remote show origin
 git remote prune origin
 ```
 
-### 记录
+## 记录
 
 git rm --cached logs/xx.log 删除已提交文件记录  
 git log -v
 
-### 其他
+## 其他
 
 //添加gradle项目结构  
 git init  
