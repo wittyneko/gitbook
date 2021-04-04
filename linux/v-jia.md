@@ -84,99 +84,12 @@ chmod +x appex.sh
 bash appex.sh install
 ```
 
-## 安装v2
-
-```bash
-bash <(curl -L -s https://install.direct/go.sh)
-bash <(wget https://install.direct/go.sh -O -)
-
-# 指定版本
-wget https://install.direct/go.sh
-chmod a+x go.sh
-./go.sh --version 4.5.0
-```
-
-## WS-TLS
-
-`${}` 替换为你的配置
-
-```bash
-# acme需要
-apt install socat curl
-# 安装acme
-curl  https://get.acme.sh | sh
-source ~/.bashrc
-# 生成证书
-~/.acme.sh/acme.sh --issue -d ${my.com} --standalone -k ec-256
-# 安装证书
-~/.acme.sh/acme.sh --installcert -d ${my.com} --fullchainpath /etc/v2ray/v2ray.crt --keypath /etc/v2ray/v2ray.key --ecc
-# 删除
-acme.sh --remove -d ${my.com} --ecc
-# 吊销
-acme.sh --revoke -d ${my.com} --ecc
-```
-
-vim `gg` + `dG` 清空内容，`i` 插入编辑，`esc` + `:wq` 保存退出
-
-v2ray config `vim /etc/v2ray/config.json`
-
-```javascript
-{
-  "inbounds": [
-    {
-      "port": 10000,
-      "listen": "127.0.0.1",
-      "protocol": "vmess",
-      "settings": {
-        "clients": [
-          {
-            "id": "${uuid}",
-            "level": 1,
-            "alterId": 6
-          }
-        ]
-      },
-      "streamSettings": {
-        "network": "ws",
-        "wsSettings": {
-          "path": "/path"
-        }
-      }
-    }
-  ],
-  "outbounds": [
-    {
-      "tag": "directout",
-      "protocol": "freedom",
-      "settings": {}
-    },
-    {
-      "tag": "blockout",
-      "protocol": "blackhole",
-      "settings": {}
-    }
-  ],
-  "routing": {
-    "rules": [
-      {
-        "type": "field",
-        "ip": [
-          "geoip:private"
-        ],
-        "outboundTag": "blockout"
-      }
-    ]
-  }
-}
-```
-
-`systemctl restart v2ray`
-
 ## Nginx
 
 [Debian 8 安装Nginx最新版本](https://www.cnblogs.com/geons/p/install_nginx.html) [Ubuntu 16.04系统中Nginx上配置HTTP/2简明教程](https://ywnz.com/linuxyffq/2103.html)
 
 ```bash
+apt update
 apt install nginx
 
 apt remove  nginx nginx-common nginx-full
@@ -201,42 +114,149 @@ root   /usr/share/nginx/html;
 /etc/nginx/conf.d
 ```
 
-`vim /etc/nginx/sites-enabled/v2ray`
+## SSL证书
 
-```text
+`${my.com}` 替换为你的域名
+
+nginx认证配置 `vim /etc/nginx/sites-enabled/${my.com}.conf`
+
+```conf
 server {
-    listen 443 ssl default_server;
-    listen [::]:443 ssl default_server;
+    listen 80;
+    listen [::]:80;
 
-    # Add index.php to the list if you are using PHP
-    index index.html index.htm index.nginx-debian.html;
-
-    #server_name _;
     server_name ${my.com};
-
-    ssl on;
-    ssl_certificate       /etc/v2ray/v2ray.crt;
-    ssl_certificate_key   /etc/v2ray/v2ray.key;
-    ssl_protocols         TLSv1 TLSv1.1 TLSv1.2;
-    ssl_ciphers           HIGH:!aNULL:!MD5;
-
-
-    location /path {
-        proxy_redirect off;
-        proxy_pass http://127.0.0.1:10000;
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection "upgrade";
-        proxy_set_header Host $http_host;
-    }
+    root /var/www/html/; 
 
     location / {
         try_files $uri $uri/ =404;
     }
+
+
+    location /path {
+        proxy_redirect off;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+        proxy_set_header Host $http_host;
+        proxy_pass http://127.0.0.1:1000;
+    }
+
+    location ~ /.well-known {
+        allow all;
+    }
 }
 ```
 
-service nginx restart
+生成证书
+
+```bash
+# acme需要
+apt install socat curl
+# 安装acme
+curl  https://get.acme.sh | sh
+source ~/.bashrc
+mkdir /etc/v2ray
+# 生成证书
+~/.acme.sh/acme.sh --issue --home /etc/v2ray --domain ${my.com} --webroot /var/www/html --reloadcmd "nginx -s reload" --force
+# 删除
+acme.sh --remove -d ${my.com} --ecc
+# 吊销
+acme.sh --revoke -d ${my.com} --ecc
+```
+
+nginx配置SSL `vim /etc/nginx/sites-enabled/${my.com}-ssl.conf`
+
+```conf
+server {
+    listen 443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    server_name ${my.com};
+    root /var/www/html; 
+    ssl_certificate /etc/v2ray/${my.com}/fullchain.cer;
+    ssl_certificate_key /etc/v2ray/${my.com}/${my.com}.key;
+    #ssl_protocols         TLSv1 TLSv1.1 TLSv1.2;
+    #ssl_ciphers           HIGH:!aNULL:!MD5;
+    include /etc/nginx/snippets/ssl-params.conf;
+
+    location / {
+        try_files $uri $uri/ =404;
+    }
+
+    location /path {
+            proxy_redirect off;
+            proxy_pass http://127.0.0.1:1000;
+            proxy_http_version 1.1;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+            proxy_set_header Host $http_host;
+    }
+
+    location ~ /.well-known {
+        allow all;
+    }
+}
+```
+
+重启Nginx `service nginx restart`  
+
+## 安装v2
+
+```bash
+bash <(curl -L https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh)
+bash <(wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh -O -)
+
+# 指定版本
+wget https://raw.githubusercontent.com/v2fly/fhs-install-v2ray/master/install-release.sh
+chmod a+x ./install-release.sh
+./install-release.sh --version 4.36.2
+```
+
+## WS-TLS
+
+vim `gg` + `dG` 清空内容，`i` 插入编辑，`esc` + `:wq` 保存退出  
+
+v2ray config `vim /usr/local/etc/v2ray/config.json`  
+
+```javascript
+{
+  "inbounds": [
+    {
+      "port": 1000,
+      "listen": "127.0.0.1",
+      "protocol": "vmess",
+      "settings": {
+        "clients": [
+          {
+            "id": "${uuid}",
+            "alterId": 0
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "ws",
+        "wsSettings": {
+          "path": "/path"
+        }
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "directout",
+      "protocol": "freedom",
+      "settings": {}
+    },
+    {
+      "tag": "blockout",
+      "protocol": "blackhole",
+      "settings": {}
+    }
+  ]
+}
+```
+重启 `service v2ray restart` 或 `systemctl restart v2ray`  
 
 ## 客户端
 
@@ -289,7 +309,7 @@ service nginx restart
                         "users": [
                             {
                                 "id": "${uuid}",
-                                "alterId": 64,
+                                "alterId": 0,
                                 "security": "auto"
                             }
                         ]
@@ -300,12 +320,6 @@ service nginx restart
                 "network": "ws",
                 "security": "tls",
                 "wsSettings": {
-                    "path": "/path",
-                    "headers": {
-                        "Host": "${my.com}"
-                    }
-                },
-                "httpSettings": {
                     "path": "/path"
                 },
                 "tlsSettings": {
